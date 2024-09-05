@@ -1,0 +1,134 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+img {
+  width: 60%;
+}
+
+.left {
+  flex: 1;
+  /* padding: 40px; */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+a {
+  display: contents;
+}
+
+/* ---- RIGHT CSS --- */
+.right {
+  flex: 1;
+  padding: 40px;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.right h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.right p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #007bff;
+}
+
+/* ---- FORM CSS --- */
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #333;
+}
+
+/* ---- BUTTON CSS --- */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  box-sizing: border-box;
+}
+
+.btn-primary:hover {
+  background-color: navy;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.40);
+}
+
+/* ---- ERROR MESSAGE CSS --- */
+.error p {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 100%;
+  z-index: 10;
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+.error.show {
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  #container {
+      flex-direction: column;
+  }
+
+  .left, .right {
+      height: 50vh;
+  }
+
+  .form-wrapper {
+      width: 80%;
+  }
+}

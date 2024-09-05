@@ -1,0 +1,55 @@
+App.css or your custom stylesheet
+
+/* Custom navbar brand style */
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Custom navbar item style */
+.nav-item .nav-link {
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+}
+
+.nav-item .nav-link:hover {
+    color: #cccccc;
+}
+
+/* Active link styling */
+.nav-item.active .nav-link {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* Container styling for spacing */
+.container-fluid {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Adjusting the navbar margin */
+.navbar {
+    margin-bottom: 1rem;
+}
+.magic-button {
+    background: linear-gradient(45deg, #ff6b6b, #ffcc33);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.magic-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.magic-button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
