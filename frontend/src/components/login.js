@@ -57,7 +57,6 @@ const LoginPage = ({ setName }) => {
       <div className="right">
         <form onSubmit={handleSubmit}>
           <h2>Welcome!</h2>
-          <p>Sign in to continue to View Call Logs.</p>
           <h2>Sign In</h2>
           <div className="form-wrapper">
             <div>

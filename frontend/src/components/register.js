@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import benzlogo from '../images/benzlogo.jpg';
+import audi1 from '../images/audi1.jpg';
+import lambo1 from '../images/lambo1.jpg';
 import './register.css';  // Import the CSS
 
 function Register() {
@@ -33,9 +36,21 @@ function Register() {
 
     return (
         <div id="container">
-            <div className="left">
-                {/* Optional: Add an image or any other content in the left div */}
-            </div>
+          <div className="left">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src={audi1} class="d-block w-100" alt="..."/>
+        </div>
+        <div class="carousel-item">
+          <img src={lambo1} class="d-block w-100" alt="..."/>
+        </div>
+        <div class="carousel-item">
+          <img src={benzlogo} class="d-block w-100" alt="..."/>
+        </div>
+      </div>
+    </div>
+          </div>
             <div className="right">
                 <form onSubmit={handleSubmit}>
                     <h2>Create an Account</h2>
@@ -85,6 +100,6 @@ function Register() {
             </div>
         </div>
     );
-}
+};
 
 export default Register;

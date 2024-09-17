@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
-from .serializers import UserSerializer
+from .serializers import UserSerializer,BrandSerializer,SportsSerializer,SuvSerializer,CarModelSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .models import User
+from .models import User,Brand,Sports,Suv,CarModel
 import jwt,datetime
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
@@ -10,6 +10,8 @@ from django.utils.decorators import method_decorator
 from rest_framework.exceptions import ValidationError
 from rest_framework import status
 from django.urls import reverse
+from rest_framework import status
+
   
 
 class RegisterView(APIView):
@@ -171,3 +173,79 @@ class LogoutView(APIView):
         response.delete_cookie('jwt')
         response.delete_cookie('refresh_token')
         return response
+
+
+
+class BrandView(APIView):
+    def get(self, request):
+        brands = Brand.objects.all()
+        serializer = BrandSerializer(brands,many=True)
+        return Response(serializer.data)
+        
+    def post(self, request):
+        serializer = BrandSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)    
+        
+
+
+class SportsView(APIView):
+    def get(self,request):
+        sports = Sports.objects.all()
+        serializer = SportsSerializer(sports,many=True)
+        return Response(serializer.data)
+    
+    def post(self,request):
+        serializer = SportsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class SuvView(APIView):
+    def get(self,request):
+        suvs = Suv.objects.all()
+        serializer = SuvSerializer(suvs,many=True)
+        return Response(serializer.data)
+    
+    def post(self,request):
+        serializer = SuvSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+            
+        
+class CarModelView(APIView):
+    def get(self, request, brand_id):
+        try:
+            brand = Brand.objects.get(id=brand_id)
+        except Brand.DoesNotExist:    
+           return Response({"error":"brand not found"},status=status.HTTP_400_BAD_REQUEST ) 
+        car_models = CarModel.objects.filter(brand=brand)
+        serializer = CarModelSerializer(car_models, many=True)
+        return Response(serializer.data,status=status.HTTP_200_OK)
+    
+    def post(self,request, brand_id):
+        try:
+            brand = Brand.objects.get(id=brand_id)
+        except Brand.DoesNotExist:
+            return Response({'error':'not found'},status=status.HTTP_400_BAD_REQUEST)
+        
+        data = request.data
+        data['brand'] = brand.id
+        
+        serializer = CarModelSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+     
+    
+    
+        
+            
+    
